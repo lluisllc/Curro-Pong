@@ -22,12 +22,25 @@ const cargaInicial = () => {
         pelota.direccionY = "arriba";
       }
     }
-  };
+  }
+
+  const detectarColisionLateral = () => {
+    if (pelota.y + pelota.alto > 470) {
+      if ((pala.y + pala.alto) > (pelota.y + pelota.alto)) {
+        pelota.direccionX = "izquierda";
+      }
+      else {
+        ((pala.y + pala.alto) < (pelota.y + pelota.alto))
+        pelota.direccionX = "derecha";
+      }
+    }
+  }
 
   const moverPelota = () => {
     pelota.borrar();
     pelota.comprobarRebote();
     detectarColision();
+    detectarColisionLateral();
     pelota.dibujar();
   };
 
